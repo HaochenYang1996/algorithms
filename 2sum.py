@@ -33,6 +33,7 @@ class Solution(object):
         # lst's indicies 2 7 11 15 correspond to 0 1 2 3 
         lst={}
         res={}
+        # enumerate(nums) gives (inedex, value)
         for i, num in enumerate(nums):
             t = target - num
             if t not in lst:
