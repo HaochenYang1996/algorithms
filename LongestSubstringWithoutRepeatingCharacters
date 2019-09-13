@@ -1,0 +1,22 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dict = {}
+        start = 0
+        maxLen=0
+
+        for i, c in enumerate(s):
+            # when current char already appereard in dict, and it is after start
+            # we change start to the next position of the char in the dict
+            if (s[i] in dict) and (start<=dict[s[i]]):
+                start = dict[c]+1
+            else:
+                # else if the current string is longer than the previous max one,
+                # we change the max length value.
+                maxLen = max(maxLen, i-start+1)
+            dict[c] = i
+
+        return maxLen
