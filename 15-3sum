@@ -1,0 +1,31 @@
+class Solution:
+    def threeSum(self, nums):
+        nums.sort()
+        # print(nums)
+        l = len(nums)
+        result = []
+
+        for i in range(l-2):
+            left = i + 1
+            right = l - 1
+            sumNums = nums[left] + nums[right] + nums[i]
+
+            if i>0 and nums[i] == nums[i-1]:
+                continue
+            while left < right:
+                sumNums = nums[left] + nums[right] + nums[i]
+                # print("sum is " + str(sumNums))
+                if sumNums < 0:
+                    left += 1
+                elif sumNums > 0:
+                    right -= 1
+                else:
+                    result.append([nums[left], nums[right], nums[i]])
+                    # print({nums[left], nums[right], nums[i]})
+                    while left <l-1 and nums[left] == nums[left+1]:
+                        left += 1
+                    while right>i+1 and nums[right] == nums[right-1]:
+                        right -= 1
+                    left += 1
+                    right -= 1
+        return result
